@@ -1,4 +1,5 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
+import CounterButton from "./CounterButton";
 
 type Props = {
   name: string;
@@ -6,6 +7,7 @@ type Props = {
   img: string;
   desc: string;
   button?: string;
+  btnStep?: number;
 };
 
 export default function ProfileCard({
@@ -14,6 +16,7 @@ export default function ProfileCard({
   img,
   desc,
   button = "Follow",
+  btnStep = 1,
 }: Props) {
   return (
     <View style={styles.card}>
@@ -32,9 +35,7 @@ export default function ProfileCard({
         {desc}
       </Text>
 
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>{button}</Text>
-      </TouchableOpacity>
+      <CounterButton title={button} step={btnStep} />
     </View>
   );
 }
@@ -69,17 +70,5 @@ const styles = StyleSheet.create({
   },
   desc: {
     padding: 10,
-  },
-  button: {
-    marginHorizontal: 10,
-    marginBottom: 10,
-    backgroundColor: "#3897f0",
-    padding: 8,
-    borderRadius: 6,
-    alignItems: "center",
-  },
-  buttonText: {
-    color: "#fff",
-    fontWeight: "bold",
   },
 });
